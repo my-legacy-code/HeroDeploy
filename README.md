@@ -2,6 +2,19 @@
 
 Heroku like automatic deployment script for angular 2 and ruby on rails apps
 
+## Preview
+**Deploying ruby on rails project**
+
+![alt rails 1](images/rails1.png)
+![alt rails 2](images/rails2.png)
+![alt rails 3](images/rails3.png)
+
+**Deploying Angular 2 project**
+
+![alt angular 2 - 1](images/angular2-1.png)
+![alt angular 2 - 1](images/angular2-2.png)
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
