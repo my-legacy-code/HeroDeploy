@@ -1,0 +1,27 @@
+#! /bin/bash
+echo -e "\033[0;34m-----> api.cover.wehackers.club receiving push\033[0m"
+echo -e "\033[0;34m-----> Ruby on Rails app dectected\033[0m"
+echo -e "\033[0;34m-----> Using Ruby version: ruby-2.4.0\033[0m"
+echo -e "\033[0;34m-----> Initializing building environment\033[0m"
+source /home/git/.bash_profile
+echo -e "\033[0;34m-----> Cleaning up workspace\033[0m"
+rm -rf workspace
+echo -e "\033[0;34m-----> Creating workspace\033[0m"
+mkdir workspace
+echo -e "\033[0;34m-----> Initializing workspace\033[0m"
+git --work-tree=/home/git/cover/backend/workspace --git-dir=/home/git/cover/backend checkout -f
+cd workspace
+echo -e "\033[0;34m-----> Migrating database\033[0m"
+rake db:migrate
+echo -e "\033[0;34m-----> Installing bundles\033[0m"
+bundle install
+echo -e "\033[0;34m-----> Launching...\033[0m"
+mkdir shared
+mkdir shared/sockets
+foreman export --app cover --user git systemd /lib/systemd/system
+sudo systemctl daemon-reload cover.target
+sudo systemctl restart cover.target
+echo -e "\033[0;34m-----> deployed to the server\033[0m"
+echo -e "\033[0;34m-----> Verifying deploy... done.\033[0m"
+echo -e "\033[0;32mVisit http://api.cover.wehackers.club\033[0m"
+

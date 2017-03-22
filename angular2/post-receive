@@ -1,0 +1,21 @@
+#!/bin/bash
+echo -e "\033[0;34m-----> Wehackers.club receiving push\033[0m"
+echo -e "\033[0;34m-----> Angular 2 app dectected\033[0m"
+echo -e "\033[0;34m-----> Initializing building environment\033[0m"
+source /home/git/.profile
+echo -e "\033[0;34m-----> Creating workspace\033[0m"
+rm -rf /home/git/cover/frontend/workspace
+mkdir /home/git/cover/frontend/workspace
+echo -e "\033[0;34m-----> Checking out the repository into workspace\033[0m"
+git --work-tree=/home/git/cover/frontend/workspace --git-dir=/home/git/cover/frontend checkout -f
+echo -e "\033[0;34m-----> Navigate into workspace\033[0m"
+cd /home/git/cover/frontend/workspace
+echo -e "\033[0;34m-----> Installing npm dependencies...\033[0m"
+npm install
+echo -e "\033[0;34m-----> Compiling Angular 2 app\033[0m"
+ng build --prod
+echo -e "\033[0;34m-----> Deploying app to nginx server\033[0m"
+rm -rf /var/www/cover.wehackers.club/*
+mv dist/* /var/www/cover.wehackers.club/
+echo -e "\033[0;34m-----> Launching...... done\033[0m"
+echo -e "\033[0;32mVisit http://cover.wehackers.club\033[0m"
