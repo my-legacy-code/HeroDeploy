@@ -72,7 +72,15 @@ Edit post-receive git-hook
 nano hooks/post-receive
 ```
 
-Paste the corresponding script into post-receive file and make it executable
+Paste the corresponding script into post-receive file
+
+(**Remember to modify git work tree and git dir in the script**)
+
+```
+git --work-tree=/home/git/example-project/workspace --git-dir=/home/git/example-project checkout -f
+```
+
+Make git hooks executable
 
 ```
 sudo chmod +x hooks/post-receive
@@ -82,7 +90,7 @@ Deployment begins after pushed repository from local machine to the server
 
 **On local machine**
 
-**When configuring for backend project, copy the corresponding Procfile to the root of the repo** 
+(**When configuring for backend project, copy the corresponding Procfile to the root of the repo**)
 
 Add remote server to git
 
